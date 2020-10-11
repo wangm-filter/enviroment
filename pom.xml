@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.briup</groupId>
+	<artifactId>enviroment-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<!-- 定义jar包的版本 -->
+	<properties>
+		<junit.version>4.12</junit.version>
+		<oracle.version>19.3.0.0</oracle.version>
+		<log4j.version>1.2.17</log4j.version>
+		<lang3.version>3.9</lang3.version>
+	</properties>
+	<!-- 管理依赖 -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- 单元测试的依赖 -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+			<!-- oracle的驱动包依赖 -->
+			<dependency>
+				<groupId>com.oracle.ojdbc</groupId>
+				<artifactId>ojdbc8</artifactId>
+				<version>${oracle.version}</version>
+			</dependency>
+			<!-- 日志依赖 -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<!-- 工具类，进行判空处理 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${lang3.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+	<!-- build用来配置编译时的信息 -->
+	<build>
+		<!-- 配置编译项目时需要的插件 -->
+		<plugins>
+			<!-- 配置maven编译插件 设置jdk版本为1.8 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>enviroment-comment</module>
+		<module>enviroment-client</module>
+		<module>enviroment-server</module>
+	</modules>
+</project>
